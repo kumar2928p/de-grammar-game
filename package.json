@@ -1,0 +1,28 @@
+{
+  "name": "de-grammar-game",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "homepage": "https://kumar2928p.github.io/de-grammar-game/",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "dependencies": {
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "devDependencies": {
+    "@rolldown/binding-win32-ia32-msvc": "^1.0.0-beta.52",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^4.7.0",
+    "gh-pages": "^6.3.0",
+    "oxlint": "^1.71.0",
+    "vite": "^7.3.6"
+  }
+}
