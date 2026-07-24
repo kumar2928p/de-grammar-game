@@ -283,7 +283,7 @@ function App() {
       correct = selectedOption === currentQuestion.correctAnswer;
       feedback = correct ? 'Correct!' : `The correct answer was: ${currentQuestion.correctAnswer}`;
     } else if (currentQuestion.gameType === 'sentence_builder') {
-      correct = jumbledAnswer.join(' ') === currentQuestion.correctSentence;
+      correct = jumbledAnswer.join(' ').toLowerCase() === currentQuestion.correctSentence.toLowerCase();
       feedback = correct ? 'Perfect sentence structure!' : `Not quite. Correct sentence: ${currentQuestion.correctSentence}`;
     } else if (currentQuestion.gameType === 'pipeline_story') {
       correct = sequenceOrder.length === currentQuestion.sentences.length &&
@@ -703,7 +703,21 @@ function App() {
               <strong>{feedbackText}</strong><br/>
               {currentQuestion.explanation}
             </div>
-            <button className="duo-btn" onClick={nextQuestion}>
+            
+            {currentQuestion.definitions && currentQuestion.definitions.length > 0 && (
+              <div style={{ marginTop: '1rem', padding: '1rem', backgroundColor: 'rgba(0,0,0,0.3)', borderRadius: '8px' }}>
+                <strong style={{ color: 'var(--accent)' }}>📚 Vocabulary Definitions:</strong>
+                <ul style={{ margin: '0.5rem 0 0 1.5rem', fontSize: '0.9rem', textAlign: 'left' }}>
+                  {currentQuestion.definitions.map((def, idx) => (
+                    <li key={idx} style={{ marginBottom: '0.25rem' }}>
+                      <strong style={{ color: 'var(--primary)' }}>{def.word}</strong>: {def.meaning}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            <button className="duo-btn" onClick={nextQuestion} style={{ marginTop: '1rem' }}>
               CONTINUE TO NEXT QUESTION
             </button>
           </div>
